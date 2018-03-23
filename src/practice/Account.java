@@ -7,7 +7,7 @@ public class Account {
 
     private static Scanner in = new Scanner(System.in);
 
-    public Account(String accntNum, String accntPin){
+    public Account(int accntNum, String accntPin){
 
     }
 
@@ -29,5 +29,7 @@ public class Account {
             pin = in.nextLine();
         }
 
+        Account newAccnt = new Account(accnt, pin);
+        //make it correspond to a certain account that has control over only its balance
     }
 }
