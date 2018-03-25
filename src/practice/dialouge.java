@@ -52,18 +52,35 @@ public class dialouge {
         boolean quit = false;
 
         if(entered == Admin){
+            System.out.println("Welcome ADMIN");
             adminMenu();
-            System.out.print("Enter Choice(5 To print admin menu)");
+            System.out.println("Enter Choice: (5 To print admin menu)");
             int choice = in.nextInt();
             in.nextLine();
 
             while(!quit){
                 switch(choice){
                     case 1:
-
+                        list.printNames();
+                        break;
+                    case 2:
+                        createAccount();
+                        break;
+                    case 3:
+                        //removeAccount();
+                        break;
+                    case 4:
+                        quit = true;
+                        break;
+                    case 5:
+                        adminMenu();
+                        break;
                 }
             }
 
+        } else{
+            System.out.println("Your admin ID was incorrect");
+            printMainMenu();
         }
     }
 
@@ -95,18 +112,15 @@ public class dialouge {
             pinLength = String.valueOf(pin).length();
         }
 
-        linkedList accnt = new linkedList(num, pin);
+        linkedList accnt = new linkedList(num,pin);
         list.names.add(accnt);
 
-        if(list.names.contains(accnt)){
-            System.out.println(accnt + ", was added successfully\n");
-        }
     }
 
     public static void accessAccount(){
-        System.out.println("Please enter your account name");
-        String name = in.nextLine();
-        if(list.names.contains(name)){
+        System.out.println("Please enter your account number");
+        int num = in.nextInt();
+        if(list.names.contains(linkedList.getAccntNum()==num)){
             System.out.println("Thank you for entering your account info!");
             printAccntMenu();
             boolean quit = false;
