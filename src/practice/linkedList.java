@@ -1,43 +1,35 @@
-//package practice;
-//
-//import sun.awt.image.ImageWatched;
-//
-//import java.util.Iterator;
-//import java.util.LinkedList;
-//import java.util.ListIterator;
-//
-//public class linkedList {
-//    private static Account accnt;
-//    public static LinkedList<accnt> names = new LinkedList<String>();
-//
-//    public static boolean addInOrder(String toAdd){
-//        ListIterator<String> listIterator = names.listIterator();
-//
-//        while(listIterator.hasNext()){
-//            int comparison = listIterator.next().compareTo(toAdd);
-//
-//            if(comparison == 0){
-//                System.out.println(toAdd + " is already a registered name");
-//                return false;
-//            }
-//            else if(comparison > 0){
-//                //add TOADD before this string
-//                listIterator.previous();
-//                listIterator.add(toAdd);
-//                return true;
-//            }else if(comparison < 0){
-//                //do nothing everything is in order
-//            }
-//        }
-//        listIterator.add(toAdd);
-//        return true;
-//    }
-//
-//    public static void printNames(LinkedList<String> list){
-//        Iterator<String> i = list.listIterator();
-//        while(i.hasNext()){
-//            System.out.println("now looking into " + i.next());
-//        }
-//        System.out.println("==========================================");
-//    }
-//}
+package practice;
+
+import sun.awt.image.ImageWatched;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class linkedList {
+    public static LinkedList<linkedList> names = new LinkedList<>();
+
+    public linkedList(int AccntNum, int pin){
+        
+    }
+
+    public static void addInOrder(linkedList toAdd) {
+        ListIterator<linkedList> listIterator = names.listIterator();
+
+        while (listIterator.hasNext()) {
+            boolean comparison = listIterator.next().equals(toAdd);
+            if (comparison == true) {
+                System.out.println(toAdd + ", is already an account");
+            } else {
+                names.add(toAdd);
+            }
+        }
+    }
+
+    public static void printNames(){
+        Iterator<linkedList> i = names.listIterator();
+        while(i.hasNext()){
+            System.out.println(i.next());
+        }
+    }
+}
