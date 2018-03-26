@@ -61,15 +61,12 @@ public class dialouge {
             while(!quit){
                 switch(choice){
                     case 1:
-                        list.printNames();
+                        //setPassword();
                         break;
                     case 2:
-                        createAccount();
-                        break;
-                    case 3:
                         //removeAccount();
                         break;
-                    case 4:
+                    case 3:
                         quit = true;
                         break;
                     case 5:
@@ -85,14 +82,13 @@ public class dialouge {
     }
 
     private static void adminMenu(){
-        System.out.println("1 - To see all accounts\n" +
-                "2 - To add an Account\n" +
-                "3 - To remove an account\n" +
-                "4 - To quit admin mode\n");
+        System.out.println("1 - To set an account password \n" +
+                "2 - To remove an account\n" +
+                "3 - To quit admin mode\n");
     }
 
     public static void createAccount(){
-        System.out.print("Enter an account number that is exactly 5 digits: ");
+        System.out.print("Make an account number: ");
         int num = in.nextInt();
         int numLength = String.valueOf(num).length();
 
@@ -102,25 +98,42 @@ public class dialouge {
             numLength = String.valueOf(num).length();
         }
 
-        System.out.print("Enter a pin number that is exactly 4 digits:");
-        int pin = in.nextInt();
-        int pinLength = String.valueOf(pin).length();
-
-        while(pinLength > 4 || pinLength < 4){
-            System.out.println("You did not enter a 4 digit pin, Please try again:");
-            pin = in.nextInt();
-            pinLength = String.valueOf(pin).length();
+        if(list.names.contains(num)){
+            System.out.println("The Account " + num + ", already exists");
+        }else {
+            list.names.add(num);
         }
 
-        linkedList accnt = new linkedList(num,pin);
-        list.names.add(accnt);
+        System.out.println("Ask your ADMIN to set up your password");
+        if(list.names.contains(num)) {
+            System.out.print("Enter a pin number that is exactly 4 digits:");
+            int pin = in.nextInt();
+            int pinLength = String.valueOf(pin).length();
 
+            while (pinLength > 4 || pinLength < 4) {
+                System.out.println("You did not enter a 4 digit pin, Please try again:");
+                pin = in.nextInt();
+                pinLength = String.valueOf(pin).length();
+            }
+        }
     }
 
     public static void accessAccount(){
         System.out.println("Please enter your account number");
         int num = in.nextInt();
-        if(list.names.contains(linkedList.getAccntNum()==num)){
+        if(list.names.contains(num)) {
+            if(num == list.names.get(0)){
+                int pin = 1111;
+            }else if(num == list.names.get(1)){
+                int pin = 2222;
+            }else if(num == list.names.get(2)){
+                int pin =3333;;
+            }else if(num == list.names.get(3)){
+                int pin = 4444;
+            }else if(num == list.names.get(4)){
+                int pin = 5555;
+            }
+        }
             System.out.println("Thank you for entering your account info!");
             printAccntMenu();
             boolean quit = false;
@@ -136,7 +149,7 @@ public class dialouge {
                 }
             }
 
-        }else{
+        else{
             System.out.println("The account name you entered doesnt match any on record");
         }
     }
